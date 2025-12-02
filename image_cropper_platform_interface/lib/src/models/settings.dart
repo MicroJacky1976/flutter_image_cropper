@@ -195,6 +195,12 @@ class AndroidUiSettings extends PlatformUiSettings {
   /// set to true to hide the bottom controls (shown by default)
   final bool? hideBottomControls;
 
+  /// set to true to hide the crop tab in the bottom controls
+  final bool? hideCropTab;
+
+  /// desired background color for the bottom controls bar
+  final Color? bottomControlsBackgroundColor;
+
   /// controls the style of crop bounds, it can be rectangle or
   /// circle style (default is [CropStyle.rectangle]).
   final CropStyle cropStyle;
@@ -227,6 +233,8 @@ class AndroidUiSettings extends PlatformUiSettings {
     this.showCropGrid,
     this.lockAspectRatio,
     this.hideBottomControls,
+    this.hideCropTab,
+    this.bottomControlsBackgroundColor,
     this.initAspectRatio,
     this.cropStyle = CropStyle.rectangle,
     this.aspectRatioPresets = const [
@@ -258,6 +266,9 @@ class AndroidUiSettings extends PlatformUiSettings {
         'android.show_crop_grid': this.showCropGrid,
         'android.lock_aspect_ratio': this.lockAspectRatio,
         'android.hide_bottom_controls': this.hideBottomControls,
+        'android.hide_crop_tab': this.hideCropTab,
+        'android.bottom_controls_background_color':
+            int32(this.bottomControlsBackgroundColor?.toARGB32()),
         'android.init_aspect_ratio': this.initAspectRatio?.name,
         'android.crop_style': this.cropStyle.name,
         'android.aspect_ratio_presets': aspectRatioPresets
@@ -363,6 +374,9 @@ class IOSUiSettings extends PlatformUiSettings {
   /// Setting this will override the Default which is a localized string for "Cancel".
   final String? cancelButtonTitle;
 
+  /// Background color for the toolbar.
+  final Color? toolbarBackgroundColor;
+
   /// controls the style of crop bounds, it can be rectangle or
   /// circle style (default is [CropStyle.rectangle]).
   final CropStyle cropStyle;
@@ -390,6 +404,7 @@ class IOSUiSettings extends PlatformUiSettings {
     this.title,
     this.doneButtonTitle,
     this.cancelButtonTitle,
+    this.toolbarBackgroundColor,
     this.cropStyle = CropStyle.rectangle,
     this.aspectRatioPresets = const [
       CropAspectRatioPreset.original,
@@ -424,6 +439,8 @@ class IOSUiSettings extends PlatformUiSettings {
         'ios.title': this.title,
         'ios.done_button_title': this.doneButtonTitle,
         'ios.cancel_button_title': this.cancelButtonTitle,
+        'ios.toolbar_background_color':
+            int32(this.toolbarBackgroundColor?.toARGB32()),
         'ios.crop_style': this.cropStyle.name,
         'ios.aspect_ratio_presets': aspectRatioPresets
             .map<Map<String, dynamic>>((item) => {

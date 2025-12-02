@@ -143,6 +143,7 @@
     NSNumber *resetAspectRatioEnabled = options[@"ios.reset_aspect_ratio_enabled"];
     NSNumber *aspectRatioLockDimensionSwapEnabled = options[@"ios.aspect_ratio_lock_dimension_swap_enabled"];
     NSNumber *aspectRatioLockEnabled = options[@"ios.aspect_ratio_lock_enabled"];
+    NSNumber *toolbarBackgroundColor = options[@"ios.toolbar_background_color"];
     NSString *title = options[@"ios.title"];
     NSString *doneButtonTitle = options[@"ios.done_button_title"];
     NSString *cancelButtonTitle = options[@"ios.cancel_button_title"];
@@ -194,6 +195,15 @@
     }
     if (cancelButtonTitle && [cancelButtonTitle isKindOfClass:[NSString class]]) {
         controller.cancelButtonTitle = cancelButtonTitle;
+    }
+    if (toolbarBackgroundColor && [toolbarBackgroundColor isKindOfClass:[NSNumber class]]) {
+        // Convert integer color value to UIColor
+        NSUInteger rgbValue = toolbarBackgroundColor.unsignedIntegerValue;
+        UIColor *color = [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0
+                                         green:((float)((rgbValue & 0x00FF00) >> 8))/255.0
+                                          blue:((float)(rgbValue & 0x0000FF))/255.0
+                                         alpha:1.0];
+        controller.toolbarBackgroundColor = color;
     }
 }
 

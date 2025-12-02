@@ -177,6 +177,8 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
         Boolean showCropGrid = call.argument("android.show_crop_grid");
         Boolean lockAspectRatio = call.argument("android.lock_aspect_ratio");
         Boolean hideBottomControls = call.argument("android.hide_bottom_controls");
+        Boolean hideCropTab = call.argument("android.hide_crop_tab");
+        Integer bottomControlsBackgroundColor = call.argument("android.bottom_controls_background_color");
 
         if (title != null) {
             options.setToolbarTitle(title);
@@ -228,6 +230,12 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
         }
         if (hideBottomControls != null) {
             options.setHideBottomControls(hideBottomControls);
+        }
+        if (hideCropTab != null) {
+            options.setHideCropTab(hideCropTab);
+        }
+        if (bottomControlsBackgroundColor != null) {
+            options.setBottomControlsBackgroundColor(bottomControlsBackgroundColor);
         }
     }
 

@@ -1,1 +1,5 @@
 rootProject.name = 'image_cropper'
+
+// 包含本地修改后的 UCrop 模块
+include ':ucrop'
+project(':ucrop').projectDir = new File(settingsDir, '../../../ucrop/ucrop')
